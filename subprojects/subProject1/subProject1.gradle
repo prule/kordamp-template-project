@@ -1,0 +1,41 @@
+
+plugins {
+    id "java"
+
+    id "org.kordamp.gradle.javadoc"
+    id "org.kordamp.gradle.jar"
+//    id "org.kordamp.gradle.pmd"
+}
+
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+sourceCompatibility = 16
+
+dependencies {
+
+    testImplementation "org.assertj:assertj-core:3.12.2"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${JUNIT_VERSION}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${JUNIT_VERSION}"
+
+}
+
+test {
+    useJUnitPlatform() // required for junit 5
+}
+
+config {
+    buildInfo {
+        enabled
+    }
+    docs {
+        javadoc {
+            enabled = true
+        }
+    }
+    quality {
+        pmd {
+            enabled = true
+        }
+    }
+}

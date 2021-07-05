@@ -1,0 +1,55 @@
+plugins {
+    id 'org.kordamp.gradle.java-project' version "${kordampVersion}"
+}
+
+config {
+    release = (rootProject.findProperty('release') ?: false).toBoolean()
+
+    info {
+        name = 'Demo'
+        vendor = 'Paul Rule'
+        description = 'Demo spring-boot/react application'
+
+        links {
+            website = 'https://github.com/prule/spring-boot-react-hateoas-template'
+            issueTracker = 'https://github.com/prule/spring-boot-react-hateoas-template/issues'
+            scm = 'https://github.com/prule/spring-boot-react-hateoas-template.git'
+        }
+
+        people {
+            person {
+                id = 'paulrule'
+                name = 'Paul Rule'
+                roles = ['developer', 'architect']
+            }
+        }
+    }
+
+    licensing {
+        enabled = false
+    }
+
+    bintray {
+        enabled = false
+    }
+
+//    coverage {
+//        jacoco {
+//            enabled
+//            mergeExecFile
+//            mergeReportHtmlFile
+//            mergeReportXmlFile
+//            additionalSourceDirs
+//            additionalClassDirs
+//        }
+//    }
+
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
