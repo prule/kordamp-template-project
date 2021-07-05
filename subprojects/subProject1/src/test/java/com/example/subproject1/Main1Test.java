@@ -1,5 +1,6 @@
-package com.example;
+package com.example.subproject1;
 
+import com.example.subproject1.Main1;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
