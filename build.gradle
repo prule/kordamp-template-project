@@ -29,10 +29,6 @@ config {
         enabled = false
     }
 
-    bintray {
-        enabled = false
-    }
-
 //    coverage {
 //        jacoco {
 //            enabled

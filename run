@@ -12,9 +12,16 @@ case "$1" in
     brew doctor
 
     brew install git
+
+    # manage java versions
+    # eg jenv add /Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home/
     brew install jenv
+
     brew install node
+
     brew install bash bash-completion git
+
+    # eg brew install adoptopenjdk15
     brew install adoptopenjdk
 
     npm install -g avn avn-nvm avn-n
@@ -36,6 +43,13 @@ case "$1" in
     echo "Compiling"
     echo ""
     ./gradlew compileJava
+    ;;
+
+  'test')
+    echo ""
+    echo "Running tests"
+    echo ""
+    ./gradlew test
     ;;
 
   'build')
@@ -64,21 +78,12 @@ case "$1" in
     echo ""
     ;;
 
-  'npm:update')
-    echo ""
-    echo "Updating npm dependencies"
-    echo ""
-    cd subprojects/frontend/react-app && npm update
-    echo ""
-    ;;
-
   'report:all')
     echo ""
     echo "Generating Jacoco test coverage report."
     echo ""
-    ./gradlew :pipeline:allTests
-    ./gradlew :pipeline:JacocoTestReport
-    ./gradlew :pipeline:pmdMain
+    ./gradlew :subProject1:allTests
+    ./gradlew :subProject1:JacocoTestReport
     echo ""
     ;;
 
@@ -87,8 +92,8 @@ case "$1" in
     echo ""
     echo "Generating Jacoco test coverage report."
     echo ""
-    ./gradlew :pipeline:allTests
-    ./gradlew :pipeline:JacocoTestReport
+    ./gradlew :subProject1:allTests
+    ./gradlew :subProject1:JacocoTestReport
     echo ""
     ;;
 
@@ -96,7 +101,7 @@ case "$1" in
     echo ""
     echo "Opening Jacoco test coverage report."
     echo ""
-    open ./subprojects/pipeline/build/reports/jacoco/test/html/index.html
+    open ./subprojects/subProject1/build/reports/jacoco/test/html/index.html
     echo ""
     ;;
 
@@ -104,7 +109,7 @@ case "$1" in
     echo ""
     echo "Opening Junit test report."
     echo ""
-    open ./subprojects/bacpipelinekend/build/reports/tests/test/index.html
+    open ./subprojects/subProject1/build/reports/tests/test/index.html
     echo ""
     ;;
 

@@ -1,61 +1,65 @@
 plugins {
-    id 'org.kordamp.gradle.guide' version '0.42.1'
-    id 'org.asciidoctor.jvm.pdf' version '3.2.0'
-    id 'org.asciidoctor.jvm.gems' version '3.2.0'
+    id 'org.kordamp.gradle.guide' version "${kordampVersion}"
+//    id 'org.asciidoctor.jvm.pdf' version '3.2.0'
+//    id 'org.asciidoctor.jvm.gems' version '3.2.0'
 }
 
 apply plugin: 'java'
 
+group = "com.example"
+version = "0.0.1-SNAPSHOT"
+
 repositories {
-    jcenter()
-    ruby.gems()
+    mavenCentral()
+
+//    ruby.gems()
 }
 
 configurations {
     asciidoctorExtensions
 }
-
-dependencies {
-    asciidoctorExtensions 'com.bmuschko:asciidoctorj-tabbed-code-extension:0.3'
-    asciidoctorGems 'rubygems:rouge:3.15.0'
-}
-
-asciidoctor {
-    configurations 'asciidoctorExtensions'
-    attributes = [
-            'gradle-version'    : project.gradle.gradleVersion,
-            'source-highlighter': 'prettify',
-            detektVersion       : detektVersion,
-            errorproneVersion   : errorproneVersion,
-            checkstyleVersion   : checkstyleVersion,
-            codenarcVersion     : codenarcVersion,
-            jacocoVersion       : jacocoVersion,
-            pmdVersion          : pmdVersion,
-            spotbugsVersion     : spotbugsVersion
-    ]
-}
-
-asciidoctorPdf {
-    dependsOn asciidoctorGemsPrepare
-
-    baseDirFollowsSourceFile()
-
-    asciidoctorj {
-        requires 'rouge'
-        attributes 'build-gradle': file('build.gradle'),
-                'sourcedir': project.sourceSets.main.java.srcDirs[0],
-                'endpoint-url': 'http://example.org',
-                'source-highlighter': 'rouge',
-                'imagesdir': './images',
-                'toc': 'left',
-                'icons': 'font',
-                'idprefix': '',
-                'idseparator': '-',
-                'pdf-page-size': 'A3' // A3 gives more real estate for code samples.
-//              'pdf-page-layout': 'landscape' // Landscape can be used if more horizontal real estate is required for code samples
-//              'pdf-page-size': '8.25in x 11.69in' // example of how to customise the size
-    }
-}
-
-
-asciidoctor.finalizedBy(asciidoctorPdf)
+//
+//dependencies {
+//    asciidoctorExtensions 'com.bmuschko:asciidoctorj-tabbed-code-extension:0.3'
+//    asciidoctorGems 'rubygems:rouge:3.15.0'
+//}
+//
+//asciidoctor {
+//    configurations 'asciidoctorExtensions'
+//    attributes = [
+//            'gradle-version'    : project.gradle.gradleVersion,
+//            'source-highlighter': 'prettify',
+//            detektVersion       : detektVersion,
+//            errorproneVersion   : errorproneVersion,
+//            checkstyleVersion   : checkstyleVersion,
+//            codenarcVersion     : codenarcVersion,
+//            jacocoVersion       : jacocoVersion,
+//            pmdVersion          : pmdVersion,
+//            spotbugsVersion     : spotbugsVersion
+//    ]
+//}
+//
+//asciidoctorPdf {
+//    dependsOn asciidoctorGemsPrepare
+//
+//    baseDirFollowsSourceFile()
+//
+//    asciidoctorj {
+//        requires 'rouge'
+//        attributes 'build-gradle': file('build.gradle'),
+//                'sourcedir': project.sourceSets.main.java.srcDirs[0],
+//                'endpoint-url': 'http://example.org',
+//                'source-highlighter': 'rouge',
+//                'imagesdir': './images',
+//                'toc': 'left',
+//                'icons': 'font',
+//                'idprefix': '',
+//                'idseparator': '-'
+////              'pdf-page-size': 'A3' // A3 gives more real estate for code samples.
+////              'pdf-page-layout': 'landscape' // Landscape can be used if more horizontal real estate is required for code samples
+////              'pdf-page-size': '8.25in x 11.69in' // example of how to customise the size
+//    }
+//}
+//
+//
+//asciidoctor.finalizedBy(asciidoctorPdf)
