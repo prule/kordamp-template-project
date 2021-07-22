@@ -1,45 +1,49 @@
 plugins {
     id 'org.kordamp.gradle.java-project' version "${kordampVersion}"
+    id "org.kordamp.gradle.pmd" version "${kordampVersion}"
 }
 
 config {
     release = (rootProject.findProperty('release') ?: false).toBoolean()
 
     info {
-        name = 'Demo'
+        name = 'Kordamp template project'
         vendor = 'Paul Rule'
-        description = 'Demo spring-boot/react application'
+        description = 'This template sets up a project with 2 submodules and a guide - put together with the Kordamp gradle plugins... see https://kordamp.org/kordamp-gradle-plugins/'
 
         links {
-            website = 'https://github.com/prule/spring-boot-react-hateoas-template'
-            issueTracker = 'https://github.com/prule/spring-boot-react-hateoas-template/issues'
-            scm = 'https://github.com/prule/spring-boot-react-hateoas-template.git'
+            website = 'https://github.com/prule/kordamp-template-project.git'
+            issueTracker = 'https://github.com/prule/kordamp-template-project/issues'
+            scm = 'https://github.com/prule/kordamp-template-project.git'
         }
 
         people {
             person {
                 id = 'paulrule'
                 name = 'Paul Rule'
-                roles = ['developer', 'architect']
+                roles = ['developer']
             }
         }
     }
-
     licensing {
         enabled = false
     }
-
-//    coverage {
-//        jacoco {
-//            enabled
-//            mergeExecFile
-//            mergeReportHtmlFile
-//            mergeReportXmlFile
-//            additionalSourceDirs
-//            additionalClassDirs
-//        }
-//    }
-
+    buildInfo {
+        enabled
+    }
+    docs {
+        javadoc {
+            enabled = true
+        }
+    }
+    quality {
+        pmd {
+            ignoreFailures = true
+            aggregate {
+                enabled = true
+            }
+        }
+    }
 }
 
 allprojects {

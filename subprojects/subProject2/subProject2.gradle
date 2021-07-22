@@ -4,7 +4,7 @@ plugins {
 
     id "org.kordamp.gradle.javadoc"
     id "org.kordamp.gradle.jar"
-//    id "org.kordamp.gradle.pmd"
+    id "org.kordamp.gradle.pmd"
 }
 
 group = "com.example"
@@ -36,6 +36,7 @@ config {
     quality {
         pmd {
             enabled = true
+            ignoreFailures = true
         }
     }
 }

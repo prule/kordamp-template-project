@@ -80,13 +80,16 @@ case "$1" in
 
   'report:all')
     echo ""
-    echo "Generating Jacoco test coverage report."
+    echo "Generating all reports."
     echo ""
-    ./gradlew :subProject1:allTests
-    ./gradlew :subProject1:JacocoTestReport
+
+    ./gradlew allTests
+    ./gradlew JacocoTestReport
+    ./gradlew allPmd
+    ./gradlew aggregatePmd
+
     echo ""
     ;;
-
 
   'report:coverage')
     echo ""
